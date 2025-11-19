@@ -1,0 +1,15 @@
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  display: none;
+}
+
+
+.left-chat-msg-container {
+  max-width: 50%;
+  height: auto;
+}
+
+.right-chat-msg-container {
+  max-width: 50%;
+  height: auto;
+}

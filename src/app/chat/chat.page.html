@@ -1,0 +1,54 @@
+<nav class="fixed-top bg-linear-to-r/hsl from-indigo-500 to-teal-400 p-5">
+  <h1 class="text-teal-50 text-3xl font-serif tracking-[5px]">SAM AI</h1>
+</nav>
+
+<main class="h-[calc(100vh-170px)] bg-teal-50 overflow-hidden overflow-y-auto">
+  <div class="grid grid-rows-1 gap-5 mt-5 mx-auto max-w-[650px]">
+    @for(chat of chats(); track $index){
+    <div class="m-5 flex items-center"
+      [ngClass]="{'justify-start': chat.role === 'assistant', 'justify-end': chat.role === 'user'}">
+      <div class="">
+        <div class="grid grid-rows-1 grid-flow-col justify-start items-center">
+
+          @if(chat.role === 'assistant') {
+          <div class="h-[60px] w-[60px] flex items-center justify-center
+           bg-stone-900 text-amber-500  rounded-full mr-1">
+            <span class="material-symbols-outlined ">robot_2</span>
+          </div>
+          }
+
+          @if(chat.showLoading){
+          <span [id]="'chat-'+ $index" class="material-symbols-outlined animate-pulse text-5xl!">more_horiz</span>
+          }@else {
+          <div [id]="'chat-'+ $index" class="bg-teal-700 rounded-2xl p-3 px-5 text-teal-50 w-fit">
+            {{chat.message}}
+          </div>
+          }
+
+          @if(chat.role === 'user'){
+          <div class="h-[60px] w-[60px] flex items-center justify-center
+           bg-stone-900 text-cyan-500  rounded-full ml-1">
+            <span class="material-symbols-outlined ">person</span>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</main>
+
+
+<footer class="fixed-bottom p-5 bg-teal-50 text-center">
+  <div class="relative w-full max-w-[650px] mx-auto">
+    <input [(ngModel)]="userInput" type="search" class="h-[40px] w-full border-2 border-solid
+     border-gray-500 rounded-3xl p-5 shadow-2xs
+      active:outline-violet-500 focus:outline-violet-500 placeholder:text-gray-500
+      " placeholder="Enter your text...">
+
+       <button (click)="send()" class="border-purple-200 text-purple-600 rounded-full flex p-1 hover:border-transparent
+        hover:bg-purple-600 hover:text-white active:bg-purple-700 absolute right-4 top-[5px]">
+       <span  class="material-symbols-outlined">send</span>
+    </button>
+  </div>
+</footer>
