@@ -50,7 +50,7 @@ export class ChatPage {
     });
     this.scrollToLatestChat();
 
-    const response: { reply?: string } = await firstValueFrom(this.http.post(`${environment.apiUrl}/chat`, { messages: aiInputMessages }));
+    const response: { reply?: string } = await firstValueFrom(this.http.post(`${environment.apiUrl}chat`, { messages: aiInputMessages }));
 
     this.chats.update((chats) => {
       chats[chats.length - 1] = {
