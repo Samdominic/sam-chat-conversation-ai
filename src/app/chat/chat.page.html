@@ -2,7 +2,7 @@
   <h1 class="text-teal-50 text-3xl font-serif tracking-[5px]">SAM AI</h1>
 </nav>
 
-<main class="h-[calc(100vh-170px)] bg-teal-50 overflow-hidden overflow-y-auto">
+<main class="h-[calc(100vh-190px)] bg-teal-50 overflow-hidden overflow-y-auto">
   <div class="grid grid-rows-1 gap-5 mt-5 mx-auto max-w-[650px]">
     @for(chat of chats(); track $index){
     <div class="m-5 flex items-center"
@@ -39,10 +39,10 @@
 </main>
 
 
-<footer class="fixed-bottom p-5 bg-teal-50 text-center">
+<footer class="fixed-bottom p-5 pb-10 bg-teal-50 text-center">
   <div class="relative w-full max-w-[650px] mx-auto">
-    <input [(ngModel)]="userInput" type="search" class="h-[40px] w-full border-2 border-solid
-     border-gray-500 rounded-3xl p-5 shadow-2xs
+    <input (keyup.enter)="send()" [(ngModel)]="userInput" type="search" class="h-[40px] w-full border-2 border-solid
+     border-gray-500 rounded-3xl p-5 pr-15 shadow-2xs
       active:outline-violet-500 focus:outline-violet-500 placeholder:text-gray-500
       " placeholder="Enter your text...">
 

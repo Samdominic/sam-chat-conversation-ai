@@ -27,6 +27,9 @@ export class ChatPage {
 
 
   async send() {
+    if(!this.userInput()?.trim()) {
+      return;
+    }
     const chats = [...this.chats()];
     chats.push({
       role: 'user',
@@ -49,7 +52,7 @@ export class ChatPage {
       return chats;
     });
     this.scrollToLatestChat();
-
+    this.userInput.set('');
     const response: { reply?: string } = await firstValueFrom(this.http.post(`${environment.apiUrl}chat`, { messages: aiInputMessages }));
 
     this.chats.update((chats) => {
@@ -60,7 +63,6 @@ export class ChatPage {
       }
       return [...chats];
     });
-    this.userInput.set('');
     this.scrollToLatestChat();
   }
 
